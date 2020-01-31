@@ -1,0 +1,7 @@
+Ref: https://eksworkshop.com/weave_flux/installweaveflux/
+
+sudo wget -O /usr/local/bin/fluxctl https://github.com/fluxcd/flux/releases/download/1.14.1/fluxctl_linux_amd64
+sudo chmod 755 /usr/local/bin/fluxctl
+fluxctl version
+fluxctl identity --k8s-fwd-ns flux
+
