@@ -1,0 +1,26 @@
+
+#Ref: https://askubuntu.com/questions/983351/how-to-install-terraform-in-ubuntu 
+
+Step1: #install unzip 
+
+sudo apt-get install unzip   
+
+Step2: #To_confirm_the_latest version 
+
+https://www.terraform.io/downloads.html    
+
+Step3: #download the package 
+
+wget https://releases.hashicorp.com/terraform/0.12.19/terraform_0.12.19_linux_amd64.zip  
+
+Step4: #Extract the package  
+
+unzip terraform_0.12.19_linux_amd64.zip 
+
+Step5: #Move to executables 
+
+sudo mv terraform /usr/local/bin/ 
+
+Step6: #Run it 
+
+terraform --version 
