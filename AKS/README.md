@@ -7,6 +7,7 @@ Make sure to place your client_id and client_secret in variables.tf before terra
 
 
 output is similar to the below one:
+
 Retrying role assignment creation: 1/36
 Retrying role assignment creation: 2/36
 {
