@@ -2,17 +2,20 @@
 on:
   pull_request:
     paths:
-    - app/**
+    - app.py
   push:
     paths:
-    - app/**
+    - app.py
     branches:         # array of glob patterns matching against refs/heads. Optional; defaults to all
     - master          # triggers on pushes that contain changes in master
 
 name: Build and Push to ACR
 
 env:
-  CONTAINER_IMAGE: sampleapp:${{ github.sha }}
+  CONTAINER_IMAGE: pythonapp:${{ github.sha }}
+  ACR_USERNAME: azacr
+  ACR_PASSWORD: e=0Dcn8rrtbnc+3rmCuWd3W3VXVETH=0WyU
+  ACR_LOGIN_SERVER: azacr.azurecr.io
 
 jobs:
   build-and-push:
@@ -26,14 +29,14 @@ jobs:
     - name: Setup ACR
       run: |
         # Login to Azure ACR
-        docker login -u gousiya573 -p O9q4KE7pkjsajdaeL1P=fol7wOph4ZfX gousiya573.azurecr.io
+        docker login -u $ACR_USERNAME -p $ACR_PASSWORD $ACR_LOGIN_SERVER
     - name: Build and tag the image
       run: |
         # Build and tag the image
-        docker build -t $CONTAINER_IMAGE -t gousiya573.azurecr.io/$CONTAINER_IMAGE .
+        docker build -t $CONTAINER_IMAGE -t $ACR_LOGIN_SERVER/$CONTAINER_IMAGE .
     # Only push to registry on master
     - name: Push
       if: github.ref == 'refs/heads/master'
       run: |
         # Push image to Azure ACR
-        docker push gousiya573.azurecr.io/$CONTAINER_IMAGE
+        docker push $ACR_LOGIN_SERVER/$CONTAINER_IMAGE
