@@ -13,9 +13,9 @@ name: Build and Push to ACR
 
 env:
   CONTAINER_IMAGE: pythonapp:${{ github.sha }}
-  ACR_USERNAME: azacr
-  ACR_PASSWORD: e=0Dcn8rrtbnc+3rmCuWd3W3VXVETH=0WyU
-  ACR_LOGIN_SERVER: azacr.azurecr.io
+  ACR_USERNAME: <PLACE_YOUR_ACR_USERNAME>
+  ACR_PASSWORD: <PLACE_YOUR_ACR_PASSWORD>
+  ACR_LOGIN_SERVER: <PLACE_YOUR_COMPLETE_LOGIN_SERVER>
 
 jobs:
   build-and-push:
